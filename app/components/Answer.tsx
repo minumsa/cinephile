@@ -1,16 +1,16 @@
 import React from "react";
-import styles from "./cine.module.css";
-import { data, negativeWord } from "./data";
+import styles from "./cinephile.module.css";
+import { data, negativeWord } from "../data";
 
-interface pageProps {
-  answerArray: (number | string)[];
+interface AnswerProps {
+  answers: (number | string)[];
 }
 
-export default function Answer({ answerArray }: pageProps) {
+export default function Answer({ answers }: AnswerProps) {
   return (
     <div>
       {data.map((item, dataIndex) => {
-        const answer = answerArray[dataIndex];
+        const answer = answers[dataIndex];
         const hasNegativeWord = item.question
           .split(" ")
           .some(element => negativeWord.includes(element));
@@ -38,7 +38,7 @@ export default function Answer({ answerArray }: pageProps) {
                   }
                 })
               ) : (
-                <React.Fragment>
+                <>
                   <span>{item.question}</span>
                   {item.type === "short-answer" ? (
                     <span className={styles["user-answer"]}>
@@ -47,27 +47,25 @@ export default function Answer({ answerArray }: pageProps) {
                   ) : (
                     ""
                   )}
-                </React.Fragment>
+                </>
               )}
             </div>
             {item.type === "multiple-choice" ? (
-              <React.Fragment>
+              <>
                 {item.type2 === "image" ? (
-                  <React.Fragment>
-                    <div className={styles["image-container"]}>
-                      <img
-                        className={styles["image"]}
-                        src={`/cinephile/${item.title}.webp`}
-                        alt={`${item.title}`}
-                        loading="lazy"
-                      />
-                    </div>
-                  </React.Fragment>
+                  <div className={styles["image-container"]}>
+                    <img
+                      className={styles["image"]}
+                      src={`/cinephile/${item.title}.webp`}
+                      alt={`${item.title}`}
+                      loading="lazy"
+                    />
+                  </div>
                 ) : item.title === "chungking-express" ? (
-                  <React.Fragment>
+                  <>
                     <div className={styles["chungking-express"]}>📞 🍍 🕒 😎</div>
                     <div className={styles["chungking-express"]}>👮‍♂️ 💌 🔑 🛫</div>
-                  </React.Fragment>
+                  </>
                 ) : null}
                 {item.options?.map((option, index) => {
                   return (
@@ -103,7 +101,7 @@ export default function Answer({ answerArray }: pageProps) {
                     </div>
                   );
                 })}
-              </React.Fragment>
+              </>
             ) : item.type === "short-answer" ? (
               <div className={styles["short-answer-container"]}>
                 {item.paragraph?.split(String(item.answer)).map((text, index) => {

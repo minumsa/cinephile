@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import styles from "./cine.module.css";
-import { data, negativeWord } from "./data";
+import { data, negativeWord } from "../data";
 import React from "react";
-import Image from "next/image";
+import styles from "./cinephile.module.css";
 
 interface QuestionProps {
   page: number;
@@ -63,7 +62,7 @@ export function Question({ page, answer, setAnswer }: QuestionProps) {
       </div>
       {data[page - 1].type === "multiple-choice" ? (
         data[page - 1].type2 === "image" ? (
-          <React.Fragment>
+          <>
             <div className={styles["image-container"]}>
               <img
                 className={styles["image"]}
@@ -73,13 +72,13 @@ export function Question({ page, answer, setAnswer }: QuestionProps) {
               />
             </div>
             <Options />
-          </React.Fragment>
+          </>
         ) : data[page - 1].title === "chungking-express" ? (
-          <React.Fragment>
+          <>
             <div className={styles["chungking-express"]}>📞 🍍 🕒 😎</div>
             <div className={styles["chungking-express"]}>👮‍♂️ 💌 🔑 🛫</div>
             <Options />
-          </React.Fragment>
+          </>
         ) : (
           <Options />
         )
