@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./cinephile.module.css";
-import { data, negativeWord } from "../data";
+import { questions, negativeWord } from "../modules/questions";
+import { BlurImg } from "./BlurImage";
 
 interface AnswerProps {
   answers: (number | string)[];
@@ -9,11 +10,12 @@ interface AnswerProps {
 export default function Answer({ answers }: AnswerProps) {
   return (
     <div>
-      {data.map((item, dataIndex) => {
+      {questions.map((item, dataIndex) => {
         const answer = answers[dataIndex];
         const hasNegativeWord = item.question
           .split(" ")
           .some(element => negativeWord.includes(element));
+        const blurHash = item.blurHash ? item.blurHash : "";
 
         return (
           <div
@@ -54,12 +56,7 @@ export default function Answer({ answers }: AnswerProps) {
               <>
                 {item.type2 === "image" ? (
                   <div className={styles["image-container"]}>
-                    <img
-                      className={styles["image"]}
-                      src={`/cinephile/${item.title}.webp`}
-                      alt={`${item.title}`}
-                      loading="lazy"
-                    />
+                    <BlurImg src={`/cinephile/${item.title}.webp`} blurHash={blurHash} punch={1} />
                   </div>
                 ) : item.title === "chungking-express" ? (
                   <>
@@ -74,21 +71,24 @@ export default function Answer({ answers }: AnswerProps) {
                       className={`${styles["options"]} ${styles["options-commentary"]}`}
                       style={{
                         cursor: "default",
-                        backgroundColor: index === data[dataIndex].answer ? "#000000" : undefined,
-                        color: index === data[dataIndex].answer ? "#ffffff" : undefined,
+                        backgroundColor:
+                          index === questions[dataIndex].answer ? "#000000" : undefined,
+                        color: index === questions[dataIndex].answer ? "#ffffff" : undefined,
                       }}
                     >
                       {`${index + 1}) ${option}`}
-                      {index === answer && data[dataIndex].answer !== answer ? (
+                      {index === answer && questions[dataIndex].answer !== answer ? (
                         <span className={styles["user-answer"]}>X</span>
                       ) : (
                         ""
                       )}
-                      {index === data[dataIndex].answer && data[dataIndex].caption ? (
-                        <span className={styles["caption"]}>{`// ${data[dataIndex].caption}`}</span>
+                      {index === questions[dataIndex].answer && questions[dataIndex].caption ? (
+                        <span
+                          className={styles["caption"]}
+                        >{`// ${questions[dataIndex].caption}`}</span>
                       ) : null}
-                      {index === data[dataIndex].answer && data[dataIndex].reference ? (
-                        <a href={data[dataIndex].reference} target="_blank">
+                      {index === questions[dataIndex].answer && questions[dataIndex].reference ? (
+                        <a href={questions[dataIndex].reference} target="_blank">
                           <div className={styles["reference"]}>
                             <span
                               className={`${styles["reference-text"]} ${styles["reference-text-dark"]} `}
@@ -115,7 +115,7 @@ export default function Answer({ answers }: AnswerProps) {
                   );
                 })}
                 {item.reference ? (
-                  <a href={data[dataIndex].reference} target="_blank">
+                  <a href={questions[dataIndex].reference} target="_blank">
                     <div className={styles["reference"]}>
                       <span className={styles["reference-text"]}>관련 자료</span>
                     </div>

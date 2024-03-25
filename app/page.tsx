@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Script from "next/script";
-import { data } from "./data";
+import { questions } from "./modules/questions";
 import styles from "./components/cinephile.module.css";
 import Answer from "./components/Answer";
 import { Question } from "./components/Question";
@@ -18,7 +18,7 @@ export default function Page() {
   const [pageType, setPageType] = useState<"index" | "test" | "result" | "answer">("index");
   const [score, setScore] = useState<number>(0);
   const [testPage, setTestPage] = useState<number>(1);
-  const testPageMax = data.length;
+  const testPageMax = questions.length;
   // const testPageMax = 5;
   const progressWidth = `${(testPage / testPageMax) * 100}%`;
   const progressPercent = `${Math.floor((testPage / testPageMax) * 100)}%`;
@@ -46,7 +46,7 @@ export default function Page() {
 
     // 결과 확인하기
     if (testPage === testPageMax) {
-      data.map((item, index) => {
+      questions.map((item, index) => {
         if (item.answer === answers[index]) setScore(prevScore => prevScore + 4);
       });
 

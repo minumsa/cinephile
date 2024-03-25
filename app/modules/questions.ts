@@ -1,4 +1,17 @@
-export const data = [
+// type QuestionType = "multiple-choice" | "short-answer";
+// type QuestionType2 = "image";
+
+// interface Questions {
+//   type: QuestionType;
+//   type2: QuestionType2;
+//   question: string;
+//   answer: number | string;
+//   options: string[];
+//   caption: string;
+//   reference: string;
+// }
+
+export const questions = [
   {
     type: "multiple-choice",
     question: "다음 중 <헤어질 결심>(2022, 박찬욱)에 등장하지 않는 음식은?",
@@ -58,6 +71,7 @@ export const data = [
     type: "multiple-choice",
     type2: "image",
     title: "shining",
+    blurHash: "LRGRrJNF.mVr%1kCNZaeR+j]jZj[",
     question:
       "다음은 영화 <샤이닝>(1980, 스탠리 큐브릭)의 한 장면이다. 사진 속 인물의 대사로 가장 적절한 것은?",
     answer: 3,
@@ -126,6 +140,7 @@ export const data = [
     type: "multiple-choice",
     type2: "image",
     title: "greta",
+    blurHash: "L5H-*]Di00~W+FWBXnRP03-:HXIU",
     question: `<레이디 버드>(2017), <작은 아씨들>(2019), <바비>(2023)를 연출했으며, 배우로도 활동 중인 다음 사진 속 감독의 이름은?`,
     answer: 3,
     options: [`패티 젠킨스`, `캐서린 비글로우`, `소피아 코폴라`, `그레타 거윅`],
@@ -153,6 +168,7 @@ export const data = [
   {
     type: "multiple-choice",
     type2: "image",
+    blurHash: "LbIrEMIU~qRjM{xuIUM{D%RjM{of",
     title: "rashomon",
     question: `다음 중 <라쇼몽>(1950, 구로사와 아키라)에서 미후네 토시로가 연기한 산적 캐릭터의 이름으로 가장 적절한 것은?`,
     answer: 3,
