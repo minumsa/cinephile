@@ -11,11 +11,13 @@ export default function Answer({ answers }: AnswerProps) {
   return (
     <div>
       {questions.map((item, dataIndex) => {
-        const answer = answers[dataIndex];
+        const userAnswer = answers[dataIndex];
+        const { question, firstType, secondType, answer, title, options, paragraph, reference } =
+          item;
         const hasNegativeWord = item.question
           .split(" ")
           .some(element => negativeWord.includes(element));
-        const blurHash = item.blurHash ? item.blurHash : "";
+        const blurHash = item.blurHash ?? "";
 
         return (
           <div
@@ -26,8 +28,8 @@ export default function Answer({ answers }: AnswerProps) {
               {`${[dataIndex + 1]}. `}
               {hasNegativeWord ? (
                 negativeWord.map((word, index) => {
-                  if (item.question.includes(word)) {
-                    const text = item.question.split(word);
+                  if (question.includes(word)) {
+                    const text = question.split(word);
                     return (
                       <React.Fragment key={index}>
                         <span>{text[0]}</span>
@@ -41,10 +43,10 @@ export default function Answer({ answers }: AnswerProps) {
                 })
               ) : (
                 <>
-                  <span>{item.question}</span>
-                  {item.type === "short-answer" ? (
+                  <span>{question}</span>
+                  {firstType === "short-answer" ? (
                     <span className={styles["user-answer"]}>
-                      {item.answer !== answer ? answer : ""}
+                      {answer !== userAnswer ? userAnswer : ""}
                     </span>
                   ) : (
                     ""
@@ -52,19 +54,19 @@ export default function Answer({ answers }: AnswerProps) {
                 </>
               )}
             </div>
-            {item.type === "multiple-choice" ? (
+            {firstType === "multiple-choice" ? (
               <>
-                {item.type2 === "image" ? (
+                {secondType === "image" ? (
                   <div className={styles["image-container"]}>
-                    <BlurImg src={`/cinephile/${item.title}.webp`} blurHash={blurHash} punch={1} />
+                    <BlurImg src={`/cinephile/${title}.webp`} blurHash={blurHash} punch={1} />
                   </div>
-                ) : item.title === "chungking-express" ? (
+                ) : title === "chungking-express" ? (
                   <>
                     <div className={styles["chungking-express"]}>📞 🍍 🕒 😎</div>
                     <div className={styles["chungking-express"]}>👮‍♂️ 💌 🔑 🛫</div>
                   </>
                 ) : null}
-                {item.options?.map((option, index) => {
+                {options?.map((option, index) => {
                   return (
                     <div
                       key={index}
@@ -77,7 +79,7 @@ export default function Answer({ answers }: AnswerProps) {
                       }}
                     >
                       {`${index + 1}) ${option}`}
-                      {index === answer && questions[dataIndex].answer !== answer ? (
+                      {index === userAnswer && questions[dataIndex].answer !== userAnswer ? (
                         <span className={styles["user-answer"]}>X</span>
                       ) : (
                         ""
@@ -102,19 +104,19 @@ export default function Answer({ answers }: AnswerProps) {
                   );
                 })}
               </>
-            ) : item.type === "short-answer" ? (
+            ) : firstType === "short-answer" ? (
               <div className={styles["short-answer-container"]}>
-                {item.paragraph?.split(String(item.answer)).map((text, index) => {
+                {paragraph?.split(String(item.answer)).map((text, index) => {
                   return index === 0 ? (
                     <React.Fragment key={index}>{text}</React.Fragment>
                   ) : (
                     <React.Fragment key={index}>
-                      <span className={styles["options-selected"]}>{item.answer}</span>
+                      <span className={styles["options-selected"]}>{answer}</span>
                       {text}
                     </React.Fragment>
                   );
                 })}
-                {item.reference ? (
+                {reference ? (
                   <a href={questions[dataIndex].reference} target="_blank">
                     <div className={styles["reference"]}>
                       <span className={styles["reference-text"]}>관련 자료</span>

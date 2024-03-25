@@ -1,9 +1,9 @@
 // type QuestionType = "multiple-choice" | "short-answer";
-// type QuestionType2 = "image";
+// type QuestionsecondType = "image";
 
 // interface Questions {
-//   type: QuestionType;
-//   type2: QuestionType2;
+//   firstType: QuestionType;
+//   secondType: QuestionsecondType;
 //   question: string;
 //   answer: number | string;
 //   options: string[];
@@ -13,7 +13,7 @@
 
 export const questions = [
   {
-    type: "multiple-choice",
+    firstType: "multiple-choice",
     question: "다음 중 <헤어질 결심>(2022, 박찬욱)에 등장하지 않는 음식은?",
     answer: 2,
     options: ["초밥", "볶음밥", "파스타", "석류"],
@@ -21,7 +21,7 @@ export const questions = [
       "해준이 서래를 심문할 때 시마스시에서 특초밥 세트를 주문해 처음으로 함께 식사를 한다. 이포로 이사한 해준은 거실에서 석류를 손질하고, 나중에 서래에게 중국식 볶음밥을 요리해준다.",
   },
   {
-    type: "multiple-choice",
+    firstType: "multiple-choice",
     question: "다음 중 <벌새>(2018, 김보라)에 등장하는 대사가 아닌 것은?",
     answer: 2,
     options: [
@@ -34,7 +34,7 @@ export const questions = [
     reference: "https://youtu.be/WjJ6pdVeOAg?t=88",
   },
   {
-    type: "multiple-choice",
+    firstType: "multiple-choice",
     question: "다음 중 소설가 무라카미 하루키의 소설을 바탕으로 만든 영화가 아닌 것은?",
     answer: 3,
     options: [
@@ -47,7 +47,7 @@ export const questions = [
     reference: "https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=49852122&start=slayer",
   },
   {
-    type: "short-answer",
+    firstType: "short-answer",
     answer: "여성",
     question:
       "배우 양자경은 제95회 아카데미 시상식에서 <에브리씽 에브리웨어 올 앳 원스>(2022, 댄 콴)로 여우주연상을 수상했다. 다음 빈칸을 채워 해당 수상 소감을 완성하시오.",
@@ -56,7 +56,7 @@ export const questions = [
     reference: "https://youtu.be/DZldmL7zeSY?t=109",
   },
   {
-    type: "multiple-choice",
+    firstType: "multiple-choice",
     question: "다음 중 칸 영화제에서 황금종려상을 수상하지 않은 작품은?",
     answer: 2,
     options: [
@@ -68,8 +68,8 @@ export const questions = [
     caption: "제78회 베니스 영화제에서 황금사자상을 수상했다.",
   },
   {
-    type: "multiple-choice",
-    type2: "image",
+    firstType: "multiple-choice",
+    secondType: "image",
     title: "shining",
     blurHash: "LRGRrJNF.mVr%1kCNZaeR+j]jZj[",
     question:
@@ -79,20 +79,20 @@ export const questions = [
     reference: "https://youtu.be/WDpipB4yehk?t=105",
   },
   {
-    type: "multiple-choice",
+    firstType: "multiple-choice",
     question: `웨스 크레이븐이 연출을 맡고 케빈 윌리엄슨이 각본을 썼으며, "공포영화의 법칙"이라는 클리셰를 메타픽션적으로 활용해 개봉 당시 흥행과 더불어 작품성까지 크게 호평받은 이 공포영화 시리즈는?`,
     answer: 0,
     options: ["<스크림> 시리즈", "<13일의 금요일> 시리즈", "<이블 데드> 시리즈", "<컨저링> 시리즈"],
   },
   {
-    type: "multiple-choice",
+    firstType: "multiple-choice",
     question: `<킬 빌> 시리즈에는 데들리 바이퍼스 출신의 4명의 암살자 캐릭터가 등장하는데, 해당 인물들은 모두 독사의 이름을 딴 독특한 코드 네임을 가지고 있다. 다음 중 주인공 베아트릭스 키도의 첫 번째 표적이었던 오렌 이시이의 코드 네임으로 가장 적절한 것은?`,
     answer: 3,
     options: ["코퍼헤드", "캘리포니아 마운틴 스네이크", "블랙 맘바", "코튼마우스"],
     reference: "https://namu.wiki/w/데들리%20바이퍼스",
   },
   {
-    type: "multiple-choice",
+    firstType: "multiple-choice",
     question: `다음 중 성소수자 주인공이 등장하지 않는 영화는?`,
     answer: 1,
     options: [
@@ -104,7 +104,7 @@ export const questions = [
     reference: "https://www.youtube.com/watch?v=BlCivrRQXtY",
   },
   {
-    type: "multiple-choice",
+    firstType: "multiple-choice",
     title: "chungking-express",
     question: `다음 중 아래 제시된 이모지들과 가장 어울리는 왕가위의 영화는?`,
     answer: 1,
@@ -113,7 +113,7 @@ export const questions = [
       "1부에서 하지무는 헤어진 연인을 기다리며 유통기한이 5월 1일까지인 파인애플 통조림을 30일 동안 사 모은다. 그리고 선글라스를 쓴 여인에게서 전화가 오길 기다린다. 2부에서 페이는 경찰 663에게 호감을 느끼고, 그와 연인 관계였던 스튜어디스가 보낸 편지 봉투에서 663의 집 열쇠를 찾는다.",
   },
   {
-    type: "multiple-choice",
+    firstType: "multiple-choice",
     question: `다음 중 <언더 더 스킨>(2013, 조나단 글레이저)에서 에일리언 로라가 지구로 오게 된 이유로 가장 적절한 것은?`,
     answer: 0,
     options: [
@@ -125,7 +125,7 @@ export const questions = [
     reference: "https://www.youtube.com/watch?v=J7bAZCOk0Sc",
   },
   {
-    type: "multiple-choice",
+    firstType: "multiple-choice",
     question: `다음 중 누벨바그의 핵심 인물이었던 장뤽 고다르의 작품이 아닌 것은?`,
     answer: 2,
     options: [
@@ -137,8 +137,8 @@ export const questions = [
     caption: "페드로 알모도바르",
   },
   {
-    type: "multiple-choice",
-    type2: "image",
+    firstType: "multiple-choice",
+    secondType: "image",
     title: "greta",
     blurHash: "L5H-*]Di00~W+FWBXnRP03-:HXIU",
     question: `<레이디 버드>(2017), <작은 아씨들>(2019), <바비>(2023)를 연출했으며, 배우로도 활동 중인 다음 사진 속 감독의 이름은?`,
@@ -147,7 +147,7 @@ export const questions = [
     reference: "https://ko.wikipedia.org/wiki/그레타_거윅",
   },
   {
-    type: "multiple-choice",
+    firstType: "multiple-choice",
     question: `다음 중 세계 최초의 장편 유성영화는?`,
     answer: 1,
     options: [
@@ -159,15 +159,15 @@ export const questions = [
     reference: "https://ko.wikipedia.org/wiki/재즈_싱어",
   },
   {
-    type: "multiple-choice",
+    firstType: "multiple-choice",
     question: `<다가오는 것들>(2016, 미아 한센 러브)에서 주인공 나탈리는 파리의 한 고등학교에서 교사로 일한다. 다음 중 나탈리가 가르치는 과목으로 가장 적절한 것은?`,
     answer: 2,
     options: [`문학`, `수학`, `철학`, `미술`],
     reference: "https://www.youtube.com/watch?v=VtmE1AAvncE",
   },
   {
-    type: "multiple-choice",
-    type2: "image",
+    firstType: "multiple-choice",
+    secondType: "image",
     blurHash: "LbIrEMIU~qRjM{xuIUM{D%RjM{of",
     title: "rashomon",
     question: `다음 중 <라쇼몽>(1950, 구로사와 아키라)에서 미후네 토시로가 연기한 산적 캐릭터의 이름으로 가장 적절한 것은?`,
@@ -177,14 +177,14 @@ export const questions = [
   },
 
   {
-    type: "short-answer",
+    firstType: "short-answer",
     question: `다음은 <로제타>(1999, 다르덴 형제)의 줄거리 일부이다. 다음 빈칸을 적절하게 채워 정답을 완성하시오.`,
     paragraph: `알코올 중독에 빠진 어머니와 함께 이동식 트레일러에서 생활하고 있는 18살의 로제타에게 가난은 일상이다. 헌옷을 주워 어머니가 수선하면 내다 팔고, 먹을 음식이 없어 강에서 숭어를 잡기도 한다. 공장에서 일한 기간이 짧아 실업급여는 나오지 않고, 다른 일거리를 찾는 일도 어렵기만 하다. 그러다 로제타는 근처 와플 가게에서 일하는 리케와 친구가 된다.`,
     answer: "와플",
     reference: "https://www.youtube.com/watch?v=woN2P4r65oA",
   },
   {
-    type: "multiple-choice",
+    firstType: "multiple-choice",
     question: `오즈의 마법사(1939, 빅터 플레밍)에서 주인공 도로시는 어떤 행위를 통해 무사히 고향으로 돌아갈 수 있게 된다. 다음 중 그 행위로 가장 적절한 것은?`,
     answer: 2,
     options: [
@@ -196,7 +196,7 @@ export const questions = [
     reference: "https://youtu.be/ooM-RGUTe2E?t=26",
   },
   {
-    type: "multiple-choice",
+    firstType: "multiple-choice",
     question: `<더 랍스터>(2015, 요르고스 란티모스)에서 호텔에 입소하게 된 사람들은 45일 동안 특정 조건을 만족시키지 않으면 동물로 변하게 된다. 다음 중 해당 조건으로 가장 적절한 것은?`,
     answer: 3,
     options: [
@@ -208,7 +208,7 @@ export const questions = [
     reference: "https://www.youtube.com/watch?v=vU29VfayDMw&t=16s",
   },
   {
-    type: "multiple-choice",
+    firstType: "multiple-choice",
     question: `다음 중 <엑스맨 2>(2003), <엑스맨: 아포칼립스>(2016), <엑스맨: 다크 피닉스>(2019)에 등장하는 나이트크롤러의 능력으로 가장 적절한 것은?`,
     answer: 3,
     options: [
@@ -220,7 +220,7 @@ export const questions = [
     reference: "https://namu.wiki/w/나이트크롤러(엑스맨%20유니버스)",
   },
   {
-    type: "multiple-choice",
+    firstType: "multiple-choice",
     question: `다음 중 픽사 애니메이션 스튜디오에서 만든 영화가 아닌 것은?`,
     answer: 1,
     options: [
@@ -232,7 +232,7 @@ export const questions = [
     caption: "드림웍스 애니메이션 스튜디오",
   },
   {
-    type: "short-answer",
+    firstType: "short-answer",
     question: `다음 빈칸을 적절하게 채워 정답을 완성하시오.`,
     paragraph: `1895년 겨울, 뤼미에르 형제는 프랑스의 한 카페에서 자신들의 작품을 공개했다. 이때 상영되었던 50초 분량의 <열차의 도착>이라는 작품은 세계 최초의 영화로 널리 알려져 있다.`,
     answer: "열차",
@@ -240,21 +240,21 @@ export const questions = [
     reference: "https://www.youtube.com/watch?v=1FAj9fJQRZA&pp=ygUUYXJyaXZhbCBvZiB0aGUgdHJhaW4%3D",
   },
   {
-    type: "multiple-choice",
+    firstType: "multiple-choice",
     question: `한국영상자료원에서 운영하고 있는 시네마테크(KOFA)는 일종의 영화 도서관으로, 영화 관련 자료를 보존하고 이를 모든 일반인에게 무료로 공개해 해당 자료의 가치를 공유한다. 다음 중 국내 시네마테크가 위치해 있는 지역은?`,
     answer: 1,
     options: [`서울특별시 광진구`, `서울특별시 마포구`, `서울특별시 종로구`, `부산광역시 해운대구`],
     reference: "https://www.koreafilm.or.kr/main",
   },
   {
-    type: "multiple-choice",
+    firstType: "multiple-choice",
     question: `다음 중 <타미 페이의 눈>(2021, 마이클 쇼월터)에 등장하는 타미 페이 바커의 직업으로 가장 적절한 것은?`,
     answer: 3,
     options: ["기자", "미용사", "안경사", "전도사"],
     reference: "https://www.youtube.com/watch?v=eMMLRnXPPJk",
   },
   {
-    type: "multiple-choice",
+    firstType: "multiple-choice",
     question: `다음 중 국내에서 가장 큰 아이맥스 스크린을 보유하고 있는 영화관은?`,
     answer: 1,
     options: [`CGV 왕십리`, `CGV 용산아이파크몰`, `CGV 천호`, `CGV 서면`],

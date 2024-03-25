@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { questions, negativeWord } from "../modules/questions";
 import React from "react";
 import styles from "./cinephile.module.css";
+import { BlurImg } from "./BlurImage";
 
 interface QuestionProps {
   page: number;
@@ -11,12 +12,14 @@ interface QuestionProps {
 
 export function Question({ page, answer, setAnswer }: QuestionProps) {
   const [hasNegativeWord, setHasNegativeWord] = useState<boolean>(false);
+  const { question, firstType, secondType, title, paragraph } = questions[page - 1];
+  const blurHash = questions[page - 1].blurHash ?? "";
 
   useEffect(() => {
-    questions[page - 1].question.split(" ").some(element => negativeWord.includes(element))
+    question.split(" ").some(element => negativeWord.includes(element))
       ? setHasNegativeWord(true)
       : setHasNegativeWord(false);
-  }, [page]);
+  }, [question]);
 
   const Options = () => {
     return questions[page - 1].options?.map((option, index) => {
@@ -45,8 +48,8 @@ export function Question({ page, answer, setAnswer }: QuestionProps) {
         {`${[page]}. `}
         {hasNegativeWord
           ? negativeWord.map((word, index) => {
-              if (questions[page - 1].question.includes(word)) {
-                const text = questions[page - 1].question.split(word);
+              if (question.includes(word)) {
+                const text = question.split(word);
                 return (
                   <React.Fragment key={index}>
                     <span>{text[0]}</span>
@@ -58,22 +61,17 @@ export function Question({ page, answer, setAnswer }: QuestionProps) {
                 return null;
               }
             })
-          : questions[page - 1].question}
+          : question}
       </div>
-      {questions[page - 1].type === "multiple-choice" ? (
-        questions[page - 1].type2 === "image" ? (
+      {firstType === "multiple-choice" ? (
+        secondType === "image" ? (
           <>
             <div className={styles["image-container"]}>
-              <img
-                className={styles["image"]}
-                src={`/cinephile/${questions[page - 1].title}.webp`}
-                alt={`${questions[page - 1].title}`}
-                loading="lazy"
-              />
+              <BlurImg src={`/cinephile/${title}.webp`} blurHash={blurHash} punch={1} />
             </div>
             <Options />
           </>
-        ) : questions[page - 1].title === "chungking-express" ? (
+        ) : title === "chungking-express" ? (
           <>
             <div className={styles["chungking-express"]}>📞 🍍 🕒 😎</div>
             <div className={styles["chungking-express"]}>👮‍♂️ 💌 🔑 🛫</div>
@@ -82,25 +80,23 @@ export function Question({ page, answer, setAnswer }: QuestionProps) {
         ) : (
           <Options />
         )
-      ) : questions[page - 1].type === "short-answer" ? (
+      ) : firstType === "short-answer" ? (
         <div className={styles["short-answer-container"]}>
-          {questions[page - 1].paragraph
-            ?.split(String(questions[page - 1].answer))
-            .map((text, index) => {
-              return index === 0 ? (
-                <React.Fragment key={index}>
-                  {text}
-                  <input
-                    className={styles["short-answer-input"]}
-                    onChange={e => {
-                      setAnswer(e.target.value);
-                    }}
-                  />
-                </React.Fragment>
-              ) : (
-                <React.Fragment key={index}>{text}</React.Fragment>
-              );
-            })}
+          {paragraph?.split(String(questions[page - 1].answer)).map((text, index) => {
+            return index === 0 ? (
+              <React.Fragment key={index}>
+                {text}
+                <input
+                  className={styles["short-answer-input"]}
+                  onChange={e => {
+                    setAnswer(e.target.value);
+                  }}
+                />
+              </React.Fragment>
+            ) : (
+              <React.Fragment key={index}>{text}</React.Fragment>
+            );
+          })}
         </div>
       ) : null}
     </div>
